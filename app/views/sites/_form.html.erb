@@ -1,0 +1,29 @@
+<div>
+  <% if @site.errors.any? %>
+      <div id="errorExplanation">
+        <h2><%= pluralize(@site.errors.count, 'error') %> prohibited this site from being saved:</h2>
+        <ul>
+          <% @site.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <%= form_for(@site, method: :post,  url: (@site.new_record? ? sites_create_site_path : update_site_path(id: @site.id))) do %>
+      <p>
+        <%= label_tag('Name') %>
+        <%= text_field(:site, :name) %>
+      </p>
+
+      <p>
+        <%= label_tag('Domain') %>
+        <%= url_field(:site, :domain) %>
+      </p>
+
+      <p>
+        <%= submit_tag("#{@site.new_record? ? 'Create' : 'Update'} Site") %>
+      </p>
+  <% end %>
+
+</div>

@@ -1,0 +1,6 @@
+<%= content_tag(:tr) do %>
+    <%= content_tag(:td, link_to(site.name, edit_site_path(id: site.id))) %>
+    <%= content_tag(:td, site.domain) %>
+    <%= content_tag(:td, link_to('Edit Details', edit_site_details_path(id: site.id))) %>
+    <%= content_tag(:td, site.site_status.try(:name)) %>
+<% end %>

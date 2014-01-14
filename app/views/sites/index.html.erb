@@ -1,0 +1,15 @@
+<%= link_to 'New Site', sites_new_site_path %>
+
+<div>
+  <%= content_tag(:table) do %>
+      <%= content_tag(:tr) do %>
+        <%= content_tag(:th, 'Name') %>
+        <%= content_tag(:th, 'Domain') %>
+        <%= content_tag(:th, nil) %>
+        <%= content_tag(:th, 'Status') %>
+      <% end %>
+      <%= render partial: 'site', collection: @sites %>
+  <% end %>
+
+  <%= paginate @sites %>
+</div>

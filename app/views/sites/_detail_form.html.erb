@@ -1,0 +1,33 @@
+<div>
+  <% if @site.errors.any? %>
+      <div id="errorExplanation">
+        <h2><%= pluralize(@site.errors.count, 'error') %> prohibited this site from being saved:</h2>
+        <ul>
+          <% @site.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <%= form_for(@site, method: :post,  url: update_site_details_path(id: @site.id)) do %>
+      <p>
+        <%= label_tag('Status') %>
+        <%= collection_select(:site, :site_status_id, SiteStatus.order(:created_at), :id, :name) %>
+      </p>
+
+      <p>
+        <%= label_tag('Template') %>
+        <%= collection_select(:site, :html_template_id, HtmlTemplate.order(:created_at), :id, :name) %>
+      </p>
+
+      <p id="dynamic_theme">
+
+      </p>
+
+      <p>
+        <%= submit_tag('Update Details') %>
+      </p>
+  <% end %>
+
+</div>
