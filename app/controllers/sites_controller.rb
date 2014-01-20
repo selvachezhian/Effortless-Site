@@ -43,6 +43,18 @@ class SitesController < ApplicationController
     end
   end
 
+  def get_themes
+    begin
+      template = HtmlTemplate.find(params[:template_id])
+      @themes = template.themes.order(:name)
+      render partial: 'get_themes'
+    rescue ActiveRecord::RecordNotFound
+      render text: 'invalid'
+    rescue ActiveRecord::StatementInvalid
+      render text: 'invalid'
+    end
+  end
+
   private
 
   def site_params
@@ -50,7 +62,7 @@ class SitesController < ApplicationController
   end
 
   def site_details_params
-    params.require(:site).permit(:site_status_id)
+    params.require(:site).permit(:site_status_id, :html_template_id, :theme_id)
   end
 
 end

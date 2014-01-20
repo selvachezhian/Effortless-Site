@@ -4,10 +4,13 @@ EffortlessSite::Application.routes.draw do
   get 'sites/new_site'
   get 'sites/:id/edit_site' => 'sites#edit_site', as: :edit_site
   get 'sites/:id/edit_site_details' => 'sites#edit_site_details', as: :edit_site_details
+  get 'sites/get_themes/:template_id' => 'sites#get_themes'
+  get 'templates' => 'html_template#index'
 
   post 'sites/create_site'
   post 'sites/:id/update_site' => 'sites#update_site', as: :update_site
   post 'sites/:id/update_site_details' => 'sites#update_site_details', as: :update_site_details
+  post 'html_template/image' => 'html_template#image'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

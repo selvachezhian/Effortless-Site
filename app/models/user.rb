@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
     super(Digest::MD5.hexdigest(pass)) if pass
   end
 
+  def is_admin?
+    self.role.try(:name).eql?('Admin')
+  end
+
 end

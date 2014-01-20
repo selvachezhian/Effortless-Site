@@ -46,3 +46,10 @@ gem 'unicorn'
 
 # Pagination for listing pages
 gem 'kaminari'
+
+# Rmagick
+gem 'rmagick', :require => 'RMagick'
+
+# Image upload
+gem 'jquery.fileupload-rails'
+gem 'unicode_utils'

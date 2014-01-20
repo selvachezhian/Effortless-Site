@@ -22,7 +22,12 @@
       </p>
 
       <p id="dynamic_theme">
-
+        <%= label_tag('Template') %>
+        <% if @site.html_template %>
+            <%= collection_select(:site, :theme_id, @site.html_template.themes.order(:name), :id, :name) %>
+        <% else %>
+            Please select template to choose theme.
+        <% end %>
       </p>
 
       <p>
