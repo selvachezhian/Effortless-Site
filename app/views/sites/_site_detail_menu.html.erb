@@ -1,0 +1,5 @@
+<%= link_to 'Site List', sites_index_path %>
+<%= link_to('Basic', edit_site_path(id: @site.id)) %>
+<%= link_to('Advanced', edit_site_details_path(id: @site.id)) %>
+<%= link_to('Menu', site_menu_list_path(site_id: @site.id)) %>
+<%= link_to('Page', site_page_list_path(site_id: @site.id)) %>

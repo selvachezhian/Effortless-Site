@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def current_user
     @user = User.find_by_email('trial.user@easysite.com')
   end
+
+  def site
+    @site = Site.find(params[:site_id])
+  end
 end

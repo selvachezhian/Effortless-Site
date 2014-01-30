@@ -56,7 +56,7 @@ test:
 production:
   adapter: postgresql
   encoding: utf-8
-  database: effortless-site_production
+  database: effortless-site_development
   pool: 5
   host: localhost
   username: postgres

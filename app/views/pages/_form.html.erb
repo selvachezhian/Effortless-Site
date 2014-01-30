@@ -1,0 +1,31 @@
+<% @tinymce_required = true %>
+
+<div>
+  <% if @page.errors.any? %>
+      <div id="errorExplanation">
+        <h2><%= pluralize(@page.errors.count, 'error') %> prohibited this menu from being saved:</h2>
+        <ul>
+          <% @page.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <%= form_for(@page, method: :post,  url: (@page.new_record? ? create_page_path(site_id: @site.id) : update_page_path(id: @page.id, site_id: @site.id))) do %>
+      <p>
+        <%= label_tag('Name') %>
+        <%= text_field(:page, :name) %>
+      </p>
+
+      <p>
+          <%= label_tag('Domain') %>
+          <%= text_area(:page, :content, { class: 'tiny_mce' }) %>
+      </p>
+
+      <p>
+        <%= submit_tag("#{@page.new_record? ? 'Create' : 'Update'} Page") %>
+      </p>
+  <% end %>
+
+</div>

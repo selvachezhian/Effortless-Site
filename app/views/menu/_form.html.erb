@@ -1,0 +1,29 @@
+<div>
+  <% if @menu.errors.any? %>
+      <div id="errorExplanation">
+        <h2><%= pluralize(@menu.errors.count, 'error') %> prohibited this menu from being saved:</h2>
+        <ul>
+          <% @menu.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <%= form_for(@menu, method: :post,  url: (@menu.new_record? ? create_menu_path(site_id: @site.id) : update_menu_path(id: @menu.id, site_id: @site.id))) do %>
+      <p>
+        <%= label_tag('Name') %>
+        <%= text_field(:menu, :name) %>
+      </p>
+
+      <!--<p>-->
+        <!--<%#= label_tag('Domain') %>-->
+        <!--<%#= url_field(:menu, :domain) %>-->
+      <!--</p>-->
+
+      <p>
+        <%= submit_tag("#{@menu.new_record? ? 'Create' : 'Update'} Menu") %>
+      </p>
+  <% end %>
+
+</div>

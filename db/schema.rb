@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140119090859) do
+ActiveRecord::Schema.define(version: 20140126134307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,39 @@ ActiveRecord::Schema.define(version: 20140119090859) do
   add_index "logos", ["image_id"], name: "index_logos_on_image_id", using: :btree
   add_index "logos", ["site_id"], name: "index_logos_on_site_id", using: :btree
   add_index "logos", ["updated_by_id"], name: "index_logos_on_updated_by_id", using: :btree
+
+  create_table "menus", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.string   "name"
+    t.uuid     "site_id"
+    t.uuid     "page_id"
+    t.integer  "sequence_order"
+    t.boolean  "active"
+    t.string   "ancestry"
+    t.uuid     "created_by_id"
+    t.uuid     "updated_by_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "menus", ["ancestry"], name: "index_menus_on_ancestry", using: :btree
+  add_index "menus", ["created_by_id"], name: "index_menus_on_created_by_id", using: :btree
+  add_index "menus", ["page_id"], name: "index_menus_on_page_id", using: :btree
+  add_index "menus", ["site_id"], name: "index_menus_on_site_id", using: :btree
+  add_index "menus", ["updated_by_id"], name: "index_menus_on_updated_by_id", using: :btree
+
+  create_table "pages", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.string   "name"
+    t.uuid     "site_id"
+    t.text     "content"
+    t.uuid     "created_by_id"
+    t.uuid     "updated_by_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pages", ["created_by_id"], name: "index_pages_on_created_by_id", using: :btree
+  add_index "pages", ["site_id"], name: "index_pages_on_site_id", using: :btree
+  add_index "pages", ["updated_by_id"], name: "index_pages_on_updated_by_id", using: :btree
 
   create_table "roles", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.string   "name"

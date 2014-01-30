@@ -30,3 +30,17 @@ $ ->
         if data is 'invalid' then alert('Record Not Found') else $('#dynamic_theme').html(data);
     );
   );
+
+$ ->
+  $(document).on('click', '.menu_status_change', ->
+    menu_id = @value;
+    site_id = $('#site_id').val();
+    status = if $(this).is(':checked') is true then 'active' else 'in-active';
+    $.ajax(
+      type: 'POST'
+      url: '/site/' + site_id + '/menu/' + menu_id + '/change_status_to/' + status
+      dataType: 'json'
+      success: (data) ->
+        if status is 'active' then alert('Menu activated') else alert('Menu de activated');
+    );
+  );
