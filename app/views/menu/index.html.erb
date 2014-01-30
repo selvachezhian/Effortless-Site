@@ -1,0 +1,19 @@
+<%= render 'sites/site_detail_menu' %>
+
+<%= link_to 'New Menu', new_site_menu_path(site_id: @site.id) %>
+
+<%= content_tag(:h1, @site.name) %>
+
+<div>
+  <%= hidden_field_tag('site_id', @site.id) %>
+
+  <%= content_tag(:table) do %>
+      <%= content_tag(:tr) do %>
+          <%= content_tag(:th, 'Name') %>
+          <%= content_tag(:th, 'Page') %>
+          <%= content_tag(:th, 'Order') %>
+          <%= content_tag(:th, 'Active') %>
+      <% end %>
+      <%= render partial: 'site_menu', collection: @menus %>
+  <% end %>
+</div>
