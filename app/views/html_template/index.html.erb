@@ -51,4 +51,4 @@
     });
 </script>
 
-<%= image_tag(Image.order(:created_at).last.get_image(80, 80)) %>
+<%= image_tag(Image.order(:created_at).last.try(:get_image, 80, 80)) %>
