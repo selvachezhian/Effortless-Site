@@ -44,3 +44,22 @@ $ ->
         if status is 'active' then alert('Menu activated') else alert('Menu de activated');
     );
   );
+
+$ ->
+  $( '#menu_sort' ).sortable(
+    revert: true
+    cursor: "move"
+    update: ( event, ui ) ->
+      menu_reorder();
+  );
+
+menu_reorder = ->
+  menu_order = $( "#menu_sort" ).sortable( "toArray");
+  site_id = $('#site_id').val();
+  $.ajax(
+    type: 'POST'
+    url: '/site/' + site_id + '/menu/change_menu_order/' + menu_order
+    dataType: 'json'
+    success: (data) ->
+      if data.status is 'success' then alert('Menu order changed') else alert('Please re order menu after refreshing the page');
+  );

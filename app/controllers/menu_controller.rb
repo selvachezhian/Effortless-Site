@@ -30,6 +30,11 @@ class MenuController < ApplicationController
     render json: { status: 'success' }
   end
 
+  def change_menu_order
+    Menu.reorder_menu( @site, params[:new_menu_order] )
+    render json: { status: 'success' }
+  end
+
   private
 
   def menu_params

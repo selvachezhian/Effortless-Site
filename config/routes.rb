@@ -35,6 +35,7 @@ EffortlessSite::Application.routes.draw do
   post 'site/:site_id/menu/create_menu' => 'menu#create_menu', as: :create_menu
   post 'site/:site_id/menu/:id/update_menu' => 'menu#update_menu', as: :update_menu
   post 'site/:site_id/menu/:id/change_status_to/:status' => 'menu#change_menu_status'
+  post 'site/:site_id/menu/change_menu_order/:new_menu_order' => 'menu#change_menu_order'
 
   # Pages
   post 'site/:site_id/pages/create_page' => 'pages#create_page', as: :create_page

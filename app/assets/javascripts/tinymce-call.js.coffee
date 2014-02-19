@@ -1,4 +1,4 @@
-$ ->
+$(document).on "page:change", ->
 
   $.each($(".tiny_mce"), (index, value) ->
 

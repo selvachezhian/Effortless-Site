@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require turbolinks
-//= require jquery.turbolinks
 //= require jquery.fileupload
 //= require global
