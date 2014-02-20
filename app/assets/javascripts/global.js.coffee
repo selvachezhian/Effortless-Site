@@ -45,7 +45,7 @@ $ ->
     );
   );
 
-$ ->
+$(document).on "page:change", ->
   $( '#menu_sort' ).sortable(
     revert: true
     cursor: "move"

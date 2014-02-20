@@ -1,6 +1,4 @@
-<%= content_tag(:tr) do %>
-    <%= content_tag(:td, site_menu.name) %>
-    <%= content_tag(:td, site_menu.page.try(:name)) %>
-    <%= content_tag(:td, site_menu.sequence_order) %>
-    <%= content_tag(:td, check_box_tag('site[active]', site_menu.id, site_menu.active, { class: 'menu_status_change' })) %>
+<%= content_tag(:li, { id: site_menu.id }) do %>
+    <%= site_menu.name %>
+    <%= check_box_tag('site[active]', site_menu.id, site_menu.active, { class: 'menu_status_change' }) %>
 <% end %>

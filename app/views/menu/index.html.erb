@@ -7,13 +7,7 @@
 <div>
   <%= hidden_field_tag('site_id', @site.id) %>
 
-  <%= content_tag(:table) do %>
-      <%= content_tag(:tr) do %>
-          <%= content_tag(:th, 'Name') %>
-          <%= content_tag(:th, 'Page') %>
-          <%= content_tag(:th, 'Order') %>
-          <%= content_tag(:th, 'Active') %>
-      <% end %>
+  <%= content_tag(:ul, { id: 'menu_sort' }) do %>
       <%= render partial: 'site_menu', collection: @menus %>
   <% end %>
 </div>
